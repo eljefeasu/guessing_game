@@ -19,8 +19,10 @@ def higher_or_lower?(computer_number, user_input)
 end
 
 user_input = []
-computer_number = rand(1..100)
-# puts computer_number
+rand_array=*(0..100)
+rand_array.shuffle!
+computer_number = rand_array[0]
+puts computer_number
 puts "I'm thinking of an integer between 1 and 100."
 
 (1..5).each do |num|
