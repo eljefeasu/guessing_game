@@ -20,7 +20,7 @@ end
 
 user_input = []
 computer_number = rand(1..100)
-puts computer_number
+# puts computer_number
 puts "I'm thinking of an integer between 1 and 100."
 
 (1..5).each do |num|
@@ -36,6 +36,6 @@ puts "I'm thinking of an integer between 1 and 100."
   higher_or_lower?(computer_number, user_input)
 
   if num == 5
-    puts "I'm sorry, but you were not able to guess my number."
+    puts "I'm sorry, but you were not able to guess my number. The number is #{computer_number}."
   end
 end
