@@ -4,12 +4,22 @@ def is_duplicate?(user_input, user_input_array)
   end
 end
 
-def higher_or_lower?(computer_number, user_input_array)
+def higher_or_lower?(computer_number, user_input_array, low_array, high_array)
   if user_input_array.last.to_i > computer_number.to_i
     puts "That is not the number. Your guess was too high."
+    if user_input_array.last.to_i < high_array[0].to_i
+      high_array.insert(0, user_input_array.last)
+    else
+      puts "You know better than that. You know it isn't higher than #{high_array[0]}"
+    end
   end
   if user_input_array.last.to_i < computer_number.to_i
     puts "That is not the number. Your guess was too low."
+    if user_input_array.last.to_i > low_array[0].to_i
+      low_array.insert(0, user_input_array.last)
+    else
+      puts "You know better than that. You know it isn't lower than #{low_array[0]}"
+    end
   end
 end
 
@@ -18,6 +28,8 @@ user_input_array = []
 rand_array=*(0..100)
 rand_array.shuffle!
 computer_number = rand_array[0]
+low_array = [0]
+high_array = [100]
 puts computer_number
 puts "I'm thinking of an integer between 1 and 100."
 
@@ -36,8 +48,7 @@ puts "I'm thinking of an integer between 1 and 100."
     puts "That's it! You got it, my number was: #{computer_number}"
     break
   end
-
-  higher_or_lower?(computer_number, user_input_array)
+  higher_or_lower?(computer_number, user_input_array, low_array, high_array)
   counter -= 1
 
   if counter == 0
